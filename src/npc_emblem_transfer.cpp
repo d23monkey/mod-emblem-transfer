@@ -196,8 +196,14 @@ public:
                 emblemId = ITEM_EMBLEM_OF_CONQUEST;
                 break;
         }
+        // Deku: emblemId should NEVER be 0
+        if (emblemId == 0)
+        {
+            player->GetSession()->SendNotification("There was a problem processing your request. Please notify an administrator.");
+            return OnGossipSelect(player, creature, sender, ACTION_CLOSE);
+        }
+        
         emblemsCount = player->GetItemCount(emblemId);
-
         if (emblemsCount < transferAmount)
         {
             player->GetSession()->SendNotification("You don't have enough emblems!");
