@@ -181,7 +181,7 @@ public:
 
         uint32 emblemsCount = 0;
         uint32 emblemId = 0;
-        uint32 newSender = sender;
+        // uint32 newSender = sender;
         float penalty = sConfigMgr->GetFloatDefault("EmblemTransfer.penalty", 0.1f);
 
         switch (sender)
