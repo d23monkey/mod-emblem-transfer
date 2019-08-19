@@ -8,7 +8,7 @@
 .mailmap
 *.orig
 *.rej
-*~
+*.*~
 .hg/
 *.kdev*
 .DS_Store
@@ -26,7 +26,6 @@ CMakeLists.txt.user
 #
 /.settings/
 /.externalToolBuilders/*
-/.vscode/
 # exclude in all levels
 nbproject/
 .sync.ffs_db
