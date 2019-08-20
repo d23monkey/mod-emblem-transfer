@@ -181,7 +181,7 @@ public:
 
         uint32 emblemsCount = 0;
         uint32 emblemId = 0;
-        uint32 newSender = sender;
+        // uint32 newSender = sender;
         float penalty = sConfigMgr->GetFloatDefault("EmblemTransfer.penalty", 0.1f);
 
         switch (sender)
@@ -221,7 +221,7 @@ public:
         return true;
     }
 
-    void SendCharactersList(Player* player, Creature* creature, uint32 sender, uint32 action)
+    void SendCharactersList(Player* player, Creature* /*creature*/, uint32 sender, uint32 /*action*/)
     {
         // Send characters list
         PreparedStatement* stmt = CharacterDatabase.GetPreparedStatement(CHAR_SEL_CHAR_GUID_NAME_BY_ACC);
