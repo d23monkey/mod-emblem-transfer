@@ -42,7 +42,7 @@ public:
     npc_emblem_transfer() : CreatureScript("npc_emblem_transfer") { }
 
     // Step 1
-    bool OnGossipHello(Player* player, Creature* creature) 
+    bool OnGossipHello(Player* player, Creature* creature)
     {
         float penalty = sConfigMgr->GetFloatDefault("EmblemTransfer.penalty", 0.0f);
         if (penalty > 0.0f)
@@ -124,7 +124,7 @@ public:
                 return OnGossipSelect(player, creature, sender, ACTION_CLOSE);
             }
         }
-        
+
         // Player selected one of the emblem transfer options
         if (sender == GOSSIP_SENDER_MAIN)
         {
@@ -202,7 +202,7 @@ public:
             player->GetSession()->SendNotification("There was a problem processing your request. Please notify an administrator.");
             return OnGossipSelect(player, creature, sender, ACTION_CLOSE);
         }
-        
+
         emblemsCount = player->GetItemCount(emblemId);
         if (emblemsCount < transferAmount)
         {
@@ -210,11 +210,11 @@ public:
             return OnGossipSelect(player, creature, sender, ACTION_CLOSE);
         }
 
-        uint64 targetGuid = MAKE_NEW_GUID(action, 0, HIGHGUID_PLAYER);
+        ObjectGuid targetGuid = ObjectGuid::Create<HighGuid::Player>(action);
         uint32 receivedAmount = transferAmount * (1.0f - penalty);
-        CharacterDatabase.PExecute("INSERT INTO emblem_transferences(sender_guid, receiver_guid, emblem_entry, amount) VALUES (%u, %u, %u, %u)", player->GetSession()->GetGuidLow(), targetGuid, emblemId, receivedAmount);
+        CharacterDatabase.PExecute("INSERT INTO emblem_transferences(sender_guid, receiver_guid, emblem_entry, amount) VALUES (%u, %u, %u, %u)", player->GetSession()->GetGuidLow(), targetGuid.GetCounter(), emblemId, receivedAmount);
         player->DestroyItemCount(emblemId, transferAmount, true, false);
-        
+
         player->PlayerTalkClass->ClearMenus(); // Clear window before farewell
         player->ADD_GOSSIP_ITEM(GOSSIP_ICON_TAXI, "Transfer completed! Log in with your other character to retrieve the emblems", GOSSIP_SENDER_MAIN, ACTION_CLOSE);
         player->SEND_GOSSIP_MENU(DEFAULT_GOSSIP_MESSAGE, creature->GetGUID());
