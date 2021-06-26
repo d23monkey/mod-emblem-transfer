@@ -225,7 +225,7 @@ public:
     void SendCharactersList(Player* player, Creature* /*creature*/, uint32 sender, uint32 /*action*/)
     {
         // Send characters list
-        PreparedStatement* stmt = CharacterDatabase.GetPreparedStatement(CHAR_SEL_CHAR_GUID_NAME_BY_ACC);
+        auto* stmt = CharacterDatabase.GetPreparedStatement(CHAR_SEL_CHAR_GUID_NAME_BY_ACC);
         stmt->setUInt32(0, player->GetSession()->GetAccountId());
         PreparedQueryResult result = CharacterDatabase.Query(stmt);
 
