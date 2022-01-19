@@ -37,6 +37,6 @@ If you need to change the module configuration, go to your server configuration 
 
 ## Credits
 
-- Deku (author)
+- [ZeegCL](https://github.com/ZeegCL) (author)
 - BarbzYHOOL and Talamortis (best guys)
 - AzerothCore: [repository](https://github.com/azerothcore) - [website](http://azerothcore.org/) - [discord chat community](https://discord.gg/PaqQRkd)
