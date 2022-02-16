@@ -226,7 +226,7 @@ public:
     {
         // Send characters list
         auto* stmt = CharacterDatabase.GetPreparedStatement(CHAR_SEL_CHAR_GUID_NAME_BY_ACC);
-        stmt->SetUInt32(0, player->GetSession()->GetAccountId());
+        stmt->SetUInt32Value(0, player->GetSession()->GetAccountId());
         PreparedQueryResult result = CharacterDatabase.Query(stmt);
 
         if (result) {
