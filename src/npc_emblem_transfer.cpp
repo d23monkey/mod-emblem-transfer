@@ -119,7 +119,7 @@ public:
                     // <END>
                 } while (result->NextRow());
 
-                CharacterDatabase.PExecute("UPDATE emblem_transferences SET active = 0, received_timestamp = CURRENT_TIMESTAMP WHERE receiver_guid = %u AND active = 1", player->GetSession()->GetGuidLow());
+                CharacterDatabase.Execute("UPDATE emblem_transferences SET active = 0, received_timestamp = CURRENT_TIMESTAMP WHERE receiver_guid = {} AND active = 1", player->GetSession()->GetGuidLow());
                 player->GetSession()->SendNotification("Thank you for using the emblem transfer service!");
                 return OnGossipSelect(player, creature, sender, ACTION_CLOSE);
             }
@@ -213,7 +213,7 @@ public:
 
         ObjectGuid targetGuid = ObjectGuid::Create<HighGuid::Player>(action);
         uint32 receivedAmount = transferAmount * (1.0f - penalty);
-        CharacterDatabase.PExecute("INSERT INTO emblem_transferences(sender_guid, receiver_guid, emblem_entry, amount) VALUES (%u, %u, %u, %u)", player->GetSession()->GetGuidLow(), targetGuid.GetCounter(), emblemId, receivedAmount);
+        CharacterDatabase.Execute("INSERT INTO emblem_transferences(sender_guid, receiver_guid, emblem_entry, amount) VALUES ({}, {}, {}, {})", player->GetSession()->GetGuidLow(), targetGuid.GetCounter(), emblemId, receivedAmount);
         player->DestroyItemCount(emblemId, transferAmount, true, false);
 
         player->PlayerTalkClass->ClearMenus(); // Clear window before farewell
