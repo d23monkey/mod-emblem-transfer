@@ -128,7 +128,7 @@ public:
         // Player selected one of the emblem transfer options
         if (sender == GOSSIP_SENDER_MAIN)
         {
-            uint32 minAmount = sConfigMgr->Get<uint32>()("EmblemTransfer.minAmount", 10);
+            uint32 minAmount = sConfigMgr->GetOption<uint32>()("EmblemTransfer.minAmount", 10);
 
             // Get the character's emblems of the selected type
             uint32 emblems = 0;
