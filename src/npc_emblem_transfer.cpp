@@ -94,8 +94,8 @@ public:
                 do
                 {
                     Field* fields = result->Fetch();
-                    uint32 emblemId = fields[0].GetUInt32();
-                    uint32 amount = fields[1].GetUInt32();
+                    uint32 emblemId = fields[0].Get<uint32>();
+                    uint32 amount = fields[1].Get<uint32>();
 
                     // The next block of code was copied from .additem command
                     // <START>
@@ -233,8 +233,8 @@ public:
             do
             {
                 Field* characterFields  = result->Fetch();
-                uint32 guid             = characterFields[0].GetUInt32();
-                std::string name        = characterFields[1].GetString();
+                uint32 guid             = characterFields[0].Get<uint32>();
+                std::string name        = characterFields[1].Get<std::string>();
 
                 if (!(guid == player->GetSession()->GetGuidLow()))
                     AddGossipItemFor(player, GOSSIP_ICON_CHAT, name, sender, guid);
