@@ -44,7 +44,7 @@ public:
     // Step 1
     bool OnGossipHello(Player* player, Creature* creature)
     {
-        float penalty = sConfigMgr->GetFloatDefault("EmblemTransfer.penalty", 0.0f);
+        float penalty = sConfigMgr->GetOption<float>("EmblemTransfer.penalty", 0.0f);
         if (penalty > 0.0f)
         {
             std::stringstream ss;
@@ -183,7 +183,7 @@ public:
         uint32 emblemsCount = 0;
         uint32 emblemId = 0;
         // uint32 newSender = sender;
-        float penalty = sConfigMgr->GetFloatDefault("EmblemTransfer.penalty", 0.1f);
+        float penalty = sConfigMgr->GetOption<float>("EmblemTransfer.penalty", 0.1f);
 
         switch (sender)
         {
