@@ -52,13 +52,13 @@ public:
             AddGossipItemFor(player, GOSSIP_ICON_CHAT, ss.str().c_str(), GOSSIP_SENDER_MAIN, ACTION_NONE);
         }
 
-        if (sConfigMgr->GetBoolDefault("EmblemTransfer.allowEmblemsFrost", true))
+        if (sConfigMgr->GetOption<bool>("EmblemTransfer.allowEmblemsFrost", true))
             AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "Transfer my Emblems of Frost", GOSSIP_SENDER_MAIN, ACTION_TRANSFER_FROST);
 
-        if (sConfigMgr->GetBoolDefault("EmblemTransfer.allowEmblemsTriumph", false))
+        if (sConfigMgr->GetOption<bool>("EmblemTransfer.allowEmblemsTriumph", false))
             AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "Transfer my Emblems of Triumph", GOSSIP_SENDER_MAIN, ACTION_TRANSFER_TRIUMPH);
 
-        if (sConfigMgr->GetBoolDefault("EmblemTransfer.allowEmblemsConquest", false))
+        if (sConfigMgr->GetOption<bool>("EmblemTransfer.allowEmblemsConquest", false))
             AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "Transfer my Emblems of Conquest", GOSSIP_SENDER_MAIN, ACTION_TRANSFER_CONQUEST);
 
         QueryResult result = CharacterDatabase.PQuery("SELECT 1 FROM emblem_transferences WHERE receiver_guid = %u AND active = 1 LIMIT 1", player->GetSession()->GetGuidLow());
