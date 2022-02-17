@@ -21,8 +21,10 @@ Allows a player to transfer emblems (frost, triump, conquest) from one character
 
 - AzerothCore v1.0.1+
 
+## Notice:
+
 Due to the uniquiness of the module you will get this message on the worldconsole, but nothing is broken.
-It is due to the npc not exactly having a gossip menu in the database, the script handles the gossip menu because of the additional locales.
+It is due to the npc not exactly having a gossip menu in the database.
 
 ![image](https://user-images.githubusercontent.com/16887899/154384533-85fe6663-5aef-4b9e-b7b5-e494cc693033.png)
 
