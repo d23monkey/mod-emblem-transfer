@@ -61,7 +61,7 @@ public:
         if (sConfigMgr->GetOption<bool>("EmblemTransfer.allowEmblemsConquest", false))
             AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "Transfer my Emblems of Conquest", GOSSIP_SENDER_MAIN, ACTION_TRANSFER_CONQUEST);
 
-        QueryResult result = CharacterDatabase.Query("SELECT 1 FROM emblem_transferences WHERE receiver_guid = %u AND active = 1 LIMIT 1", player->GetSession()->GetGuidLow());
+        QueryResult result = CharacterDatabase.Query("SELECT 1 FROM emblem_transferences WHERE receiver_guid = {} AND active = 1 LIMIT 1", player->GetSession()->GetGuidLow());
         if (result)
             AddGossipItemFor(player, GOSSIP_ICON_TALK, "Get my transfered emblems", GOSSIP_SENDER_MAIN, ACTION_RETRIEVE_EMBLEMS);
 
@@ -88,7 +88,7 @@ public:
         // Player wants to get its emblems
         if (action == ACTION_RETRIEVE_EMBLEMS)
         {
-            QueryResult result = CharacterDatabase.Query("SELECT emblem_entry, amount FROM emblem_transferences WHERE receiver_guid = %u AND active = 1", player->GetSession()->GetGuidLow());
+            QueryResult result = CharacterDatabase.Query("SELECT emblem_entry, amount FROM emblem_transferences WHERE receiver_guid = {} AND active = 1", player->GetSession()->GetGuidLow());
             if (result)
             {
                 do
