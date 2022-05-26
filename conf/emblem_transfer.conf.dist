@@ -34,3 +34,17 @@ EmblemTransfer.allowEmblemsTriumph = false
 #
 
 EmblemTransfer.allowEmblemsConquest = false
+
+#
+# Allows to transfer Emblems of Honor 
+# default: false
+#
+
+EmblemTransfer.allowEmblemsHonor = false
+
+#
+# Allows to transfer Emblems of Valor
+# default: false
+#
+
+EmblemTransfer.allowEmblemsValor = false
