@@ -171,10 +171,12 @@ public:
                 case ACTION_TRANSFER_HEROISM:
                     newSender = GOSSIP_SENDER_TRANSFER_HEROISM;
                     emblems = player->GetItemCount(ITEM_EMBLEM_OF_HEROISM);
+					break;
 
                 case ACTION_TRANSFER_HONOR:
                     newSender = GOSSIP_SENDER_TRANSFER_HONOR;
                     emblems = player->GetItemCount(ITEM_EMBLEM_OF_HONOR);
+					break;
 
 					break;
                 case ACTION_TRANSFER_VALOR:
@@ -237,8 +239,8 @@ public:
 
             case GOSSIP_SENDER_TRANSFER_HONOR:
                 emblemId = ITEM_EMBLEM_OF_HONOR;
-
-				break;
+                break;
+				
             case GOSSIP_SENDER_TRANSFER_VALOR:
                 emblemId = ITEM_EMBLEM_OF_VALOR;
                 break;
