@@ -13,11 +13,11 @@ enum Actions
     ACTION_TRANSFER_FROST       = 1002,
     ACTION_TRANSFER_TRIUMPH     = 1003,
     ACTION_TRANSFER_CONQUEST    = 1004,
-<<<<<<< HEAD
+
 	ACTION_TRANSFER_HEROISM     = 1005,
-=======
+
 	ACTION_TRANSFER_HONOR       = 1005,
->>>>>>> 3e9629b6eb5869d1e7ed85f79504b4a605181f8e
+
 	ACTION_TRANSFER_VALOR       = 1006,
     ACTION_CLOSE                = 1007
 };
@@ -27,11 +27,11 @@ enum Items
     ITEM_EMBLEM_OF_FROST    = 49426,
     ITEM_EMBLEM_OF_TRIUMPH  = 47241,
     ITEM_EMBLEM_OF_CONQUEST = 45624,
-<<<<<<< HEAD
+
 	ITEM_EMBLEM_OF_HEROISM    = 40752,
-=======
+
 	ITEM_EMBLEM_OF_HONOR    = 40752,
->>>>>>> 3e9629b6eb5869d1e7ed85f79504b4a605181f8e
+
 	ITEM_EMBLEM_OF_VALOR    = 40753
 };
 
@@ -40,11 +40,11 @@ enum SenderMenu
     GOSSIP_SENDER_TRANSFER_FROST    = 1001,
     GOSSIP_SENDER_TRANSFER_TRIUMPH  = 1002,
     GOSSIP_SENDER_TRANSFER_CONQUEST = 1003,
-<<<<<<< HEAD
+
 	GOSSIP_SENDER_TRANSFER_HEROISM  = 1004,
-=======
+
 	GOSSIP_SENDER_TRANSFER_HONOR    = 1004,
->>>>>>> 3e9629b6eb5869d1e7ed85f79504b4a605181f8e
+
 	GOSSIP_SENDER_TRANSFER_VALOR    = 1005
 };
 
@@ -79,13 +79,13 @@ public:
         if (sConfigMgr->GetOption<bool>("EmblemTransfer.allowEmblemsConquest", false))
             AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "Transfer my Emblems of Conquest", GOSSIP_SENDER_MAIN, ACTION_TRANSFER_CONQUEST);
 
-<<<<<<< HEAD
+
         if (sConfigMgr->GetOption<bool>("EmblemTransfer.allowEmblemsHEROISM", false))
             AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "Transfer my Emblems of Heroism", GOSSIP_SENDER_MAIN, ACTION_TRANSFER_HEROISM);
-=======
+
         if (sConfigMgr->GetOption<bool>("EmblemTransfer.allowEmblemsHonor", false))
             AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "Transfer my Emblems of Honor", GOSSIP_SENDER_MAIN, ACTION_TRANSFER_HONOR);
->>>>>>> 3e9629b6eb5869d1e7ed85f79504b4a605181f8e
+
 
         if (sConfigMgr->GetOption<bool>("EmblemTransfer.allowEmblemsValor", false))
             AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "Transfer my Emblems of Valor", GOSSIP_SENDER_MAIN, ACTION_TRANSFER_VALOR);
@@ -176,15 +176,15 @@ public:
                     newSender = GOSSIP_SENDER_TRANSFER_CONQUEST;
                     emblems = player->GetItemCount(ITEM_EMBLEM_OF_CONQUEST);
 					break;
-<<<<<<< HEAD
+
                 case ACTION_TRANSFER_HEROISM:
                     newSender = GOSSIP_SENDER_TRANSFER_HEROISM;
                     emblems = player->GetItemCount(ITEM_EMBLEM_OF_HEROISM);
-=======
+
                 case ACTION_TRANSFER_HONOR:
                     newSender = GOSSIP_SENDER_TRANSFER_HONOR;
                     emblems = player->GetItemCount(ITEM_EMBLEM_OF_HONOR);
->>>>>>> 3e9629b6eb5869d1e7ed85f79504b4a605181f8e
+
 					break;
                 case ACTION_TRANSFER_VALOR:
                     newSender = GOSSIP_SENDER_TRANSFER_VALOR;
@@ -239,13 +239,13 @@ public:
             case GOSSIP_SENDER_TRANSFER_CONQUEST:
                 emblemId = ITEM_EMBLEM_OF_CONQUEST;
 				break;
-<<<<<<< HEAD
+
             case GOSSIP_SENDER_TRANSFER_HEROISM:
                 emblemId = ITEM_EMBLEM_OF_HEROISM;
 =======
             case GOSSIP_SENDER_TRANSFER_HONOR:
                 emblemId = ITEM_EMBLEM_OF_HONOR;
->>>>>>> 3e9629b6eb5869d1e7ed85f79504b4a605181f8e
+
 				break;
             case GOSSIP_SENDER_TRANSFER_VALOR:
                 emblemId = ITEM_EMBLEM_OF_VALOR;
