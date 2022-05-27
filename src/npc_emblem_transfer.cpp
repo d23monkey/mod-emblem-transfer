@@ -13,11 +13,8 @@ enum Actions
     ACTION_TRANSFER_FROST       = 1002,
     ACTION_TRANSFER_TRIUMPH     = 1003,
     ACTION_TRANSFER_CONQUEST    = 1004,
-
 	ACTION_TRANSFER_HEROISM     = 1005,
-
 	ACTION_TRANSFER_HONOR       = 1005,
-
 	ACTION_TRANSFER_VALOR       = 1006,
     ACTION_CLOSE                = 1007
 };
@@ -27,11 +24,8 @@ enum Items
     ITEM_EMBLEM_OF_FROST    = 49426,
     ITEM_EMBLEM_OF_TRIUMPH  = 47241,
     ITEM_EMBLEM_OF_CONQUEST = 45624,
-
 	ITEM_EMBLEM_OF_HEROISM    = 40752,
-
 	ITEM_EMBLEM_OF_HONOR    = 40752,
-
 	ITEM_EMBLEM_OF_VALOR    = 40753
 };
 
@@ -40,12 +34,9 @@ enum SenderMenu
     GOSSIP_SENDER_TRANSFER_FROST    = 1001,
     GOSSIP_SENDER_TRANSFER_TRIUMPH  = 1002,
     GOSSIP_SENDER_TRANSFER_CONQUEST = 1003,
-
 	GOSSIP_SENDER_TRANSFER_HEROISM  = 1004,
-
 	GOSSIP_SENDER_TRANSFER_HONOR    = 1004,
-
-	GOSSIP_SENDER_TRANSFER_VALOR    = 1005
+    GOSSIP_SENDER_TRANSFER_VALOR    = 1005
 };
 
 /*
@@ -80,7 +71,7 @@ public:
             AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "Transfer my Emblems of Conquest", GOSSIP_SENDER_MAIN, ACTION_TRANSFER_CONQUEST);
 
 
-        if (sConfigMgr->GetOption<bool>("EmblemTransfer.allowEmblemsHEROISM", false))
+        if (sConfigMgr->GetOption<bool>("EmblemTransfer.allowEmblemsHeroism", false))
             AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "Transfer my Emblems of Heroism", GOSSIP_SENDER_MAIN, ACTION_TRANSFER_HEROISM);
 
         if (sConfigMgr->GetOption<bool>("EmblemTransfer.allowEmblemsHonor", false))
@@ -242,7 +233,8 @@ public:
 
             case GOSSIP_SENDER_TRANSFER_HEROISM:
                 emblemId = ITEM_EMBLEM_OF_HEROISM;
-=======
+				break;
+
             case GOSSIP_SENDER_TRANSFER_HONOR:
                 emblemId = ITEM_EMBLEM_OF_HONOR;
 
