@@ -36,11 +36,11 @@ EmblemTransfer.allowEmblemsTriumph = false
 EmblemTransfer.allowEmblemsConquest = false
 
 #
-# Allows to transfer Emblems of Honor 
+# Allows to transfer Emblems of Heroism
 # default: false
 #
 
-EmblemTransfer.allowEmblemsHonor = false
+EmblemTransfer.allowEmblemsHeroism = false
 
 #
 # Allows to transfer Emblems of Valor
