@@ -1,5 +1,5 @@
 SET
-@Entry 		:= 100000,
+@Entry 		:= 150000,
 @Model 		:= 16804, -- Elven Jeweler
 @Name 		:= "Turco",
 @Title 		:= "Emblem Transfer";
@@ -11,4 +11,4 @@ INSERT INTO creature_template (`entry`, `modelid1`, `name`, `subname`, `IconName
 
 -- NPC Text
 DELETE FROM `npc_text` WHERE `ID`=@Entry;
-INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Greetings $N. I can transfer your emblems to another character for a small fee.');
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Grüße $N. Ich kann eure Embleme auf einen anderen Charakter auf eurem Account transferieren für eine kleine Gebühr.');
