@@ -21,26 +21,6 @@ Allows a player to transfer emblems (frost, triump, conquest) from one character
 
 - AzerothCore v1.0.1+
 
-## Notice:
-
-Due to the uniquiness of the module you will get this message on the worldconsole, but nothing is broken.
-It is due to the npc not exactly having a gossip menu in the database.
-
-![image](https://user-images.githubusercontent.com/16887899/154384533-85fe6663-5aef-4b9e-b7b5-e494cc693033.png)
-
-Please add the adjustment to the conf to have that error message not show up:
-```
-#    Creatures.CustomIDs
-#        Description: The list of custom creatures with gossip dialogues hardcoded in core,
-#                     divided by "," without spaces.
-#                     It is implied that you do not use for these NPC dialogs data from "gossip_menu" table.
-#                     Server will skip these IDs during the definitions validation process.
-#        Example:     Creatures.CustomIDs = "190010,55005,999991,25462,98888,100000" - Npcs for Transmog, Guild-zone, 1v1-arena modules
-#                                                                               Skip Dk Module, Racial Trait Swap Modules
-#        Default:     ""
-
-Creatures.CustomIDs = "190010,55005,999991,25462,98888,100000"
-```
 
 ## Installation
 
