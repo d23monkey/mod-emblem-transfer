@@ -1,7 +1,0 @@
-CU_SET_PATH("CMAKE_EMBLEM_TRANSFER_DIR" "${CMAKE_CURRENT_LIST_DIR}")
-
-AC_ADD_SCRIPT("${CMAKE_CURRENT_LIST_DIR}/src/npc_emblem_transfer.cpp")
-
-AC_ADD_SCRIPT_LOADER("NpcEmblemTransfer" "${CMAKE_CURRENT_LIST_DIR}/src/loader.h")
-
-AC_ADD_CONFIG_FILE("${CMAKE_CURRENT_LIST_DIR}/conf/emblem_transfer.conf.dist")
