@@ -1,13 +1,15 @@
 # ![logo](https://raw.githubusercontent.com/azerothcore/azerothcore.github.io/master/images/logo-github.png) AzerothCore
-## mod-emblem-transfer
-### This is a module for [AzerothCore](http://www.azerothcore.org)
-- Latest build status with azerothcore: [![Build Status](https://github.com/azerothcore/mod-emblem-transfer/workflows/core-build/badge.svg?branch=master&event=push)](https://github.com/azerothcore/mod-emblem-transfer)
 
+## mod-emblem-transfer
+
+### This is a module for [AzerothCore](http://www.azerothcore.org)
+- Latest build status with azerothcore:
+
+[![Build Status](https://github.com/azerothcore/mod-emblem-transfer/workflows/core-build/badge.svg?branch=master&event=push)](https://github.com/azerothcore/mod-emblem-transfer)
 
 ## Description
 
 Allows a player to transfer emblems (frost, triump, conquest) from one character to another **within the same account**. A configurable penalty can be applied (default: 10%) to the transfered amount.
-
 
 ## How to use ingame
 
@@ -21,7 +23,6 @@ Allows a player to transfer emblems (frost, triump, conquest) from one character
 
 - AzerothCore v1.0.1+
 
-
 ## Installation
 
 ```
@@ -33,7 +34,6 @@ Allows a player to transfer emblems (frost, triump, conquest) from one character
 ## Edit module configuration (optional)
 
 If you need to change the module configuration, go to your server configuration folder (where your `worldserver` or `worldserver.exe` is), copy `emblem_transfer.conf.dist` to `emblem_transfer.conf` and edit that new file.
-
 
 ## Credits
 

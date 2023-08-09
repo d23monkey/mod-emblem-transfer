@@ -1,4 +1,3 @@
-#include "loader.h"
 #include "ScriptMgr.h"
 #include "Configuration/Config.h"
 #include "GossipDef.h"
