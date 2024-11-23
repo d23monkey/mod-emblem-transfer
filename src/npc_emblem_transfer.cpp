@@ -4,6 +4,8 @@
 #include "Player.h"
 #include "ScriptedGossip.h"
 #include "Language.h"
+#include "Chat.h"
+#pragma execution_character_set("utf-8")
 
 enum Actions
 {
@@ -19,11 +21,11 @@ enum Actions
 
 enum Items
 {
-    ITEM_EMBLEM_OF_FROST    = 49426,
-    ITEM_EMBLEM_OF_TRIUMPH  = 47241,
-    ITEM_EMBLEM_OF_CONQUEST = 45624,
-    ITEM_EMBLEM_OF_HEROISM  = 40752,
-    ITEM_EMBLEM_OF_VALOR    = 40753
+    ITEM_EMBLEM_OF_FROST    = 49426,//寒冰纹章
+    ITEM_EMBLEM_OF_TRIUMPH  = 47241,//凯旋纹章
+    ITEM_EMBLEM_OF_CONQUEST = 45624,//征服纹章
+    ITEM_EMBLEM_OF_HEROISM  = 40752,//英雄纹章
+    ITEM_EMBLEM_OF_VALOR    = 40753//勇气纹章
 };
 
 enum SenderMenu
@@ -54,28 +56,28 @@ public:
         if (penalty > 0.0f)
         {
             std::stringstream ss;
-            ss << "Transferences will be applied a " << (penalty * 100.0f) << "% penalty. For every 10, you will receive " << (10 * (1.0f - penalty)) << ".";
+            ss << "转移纹章会被收取 " << (penalty * 100.0f) << "% 的费用. 每转移10个，你只会获取 " << (10 * (1.0f - penalty)) << "个.";
             AddGossipItemFor(player, GOSSIP_ICON_CHAT, ss.str().c_str(), GOSSIP_SENDER_MAIN, ACTION_NONE);
         }
 
         if (sConfigMgr->GetOption<bool>("EmblemTransfer.allowEmblemsFrost", true))
-            AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "Transfer my Emblems of Frost", GOSSIP_SENDER_MAIN, ACTION_TRANSFER_FROST);
+            AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "转移我的寒冰纹章", GOSSIP_SENDER_MAIN, ACTION_TRANSFER_FROST);
 
         if (sConfigMgr->GetOption<bool>("EmblemTransfer.allowEmblemsTriumph", false))
-            AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "Transfer my Emblems of Triumph", GOSSIP_SENDER_MAIN, ACTION_TRANSFER_TRIUMPH);
+            AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "转移我的凯旋纹章", GOSSIP_SENDER_MAIN, ACTION_TRANSFER_TRIUMPH);
 
         if (sConfigMgr->GetOption<bool>("EmblemTransfer.allowEmblemsConquest", false))
-            AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "Transfer my Emblems of Conquest", GOSSIP_SENDER_MAIN, ACTION_TRANSFER_CONQUEST);
+            AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "转移我的征服纹章", GOSSIP_SENDER_MAIN, ACTION_TRANSFER_CONQUEST);
 
         if (sConfigMgr->GetOption<bool>("EmblemTransfer.allowEmblemsHeroism", false))
-            AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "Transfer my Emblems of Heroism", GOSSIP_SENDER_MAIN, ACTION_TRANSFER_HEROISM);
+            AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "转移我的英雄纹章", GOSSIP_SENDER_MAIN, ACTION_TRANSFER_HEROISM);
 
         if (sConfigMgr->GetOption<bool>("EmblemTransfer.allowEmblemsValor", false))
-            AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "Transfer my Emblems of Valor", GOSSIP_SENDER_MAIN, ACTION_TRANSFER_VALOR);
+            AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "转移我的勇气纹章", GOSSIP_SENDER_MAIN, ACTION_TRANSFER_VALOR);
 
         QueryResult result = CharacterDatabase.Query("SELECT 1 FROM emblem_transferences WHERE receiver_guid = {} AND active = 1 LIMIT 1", player->GetSession()->GetGuidLow());
         if (result)
-            AddGossipItemFor(player, GOSSIP_ICON_TALK, "Get my transfered emblems", GOSSIP_SENDER_MAIN, ACTION_RETRIEVE_EMBLEMS);
+            AddGossipItemFor(player, GOSSIP_ICON_TALK, "获取我转移的纹章", GOSSIP_SENDER_MAIN, ACTION_RETRIEVE_EMBLEMS);
 
         SendGossipMenuFor(player, DEFAULT_GOSSIP_MESSAGE, creature->GetGUID());
 
@@ -121,7 +123,7 @@ public:
 
                     if (amount == 0 || dest.empty())
                     {
-                        player->GetSession()->SendNotification(LANG_ITEM_CANNOT_CREATE, emblemId, noSpaceForCount);
+                        ChatHandler(player->GetSession()).SendNotification(LANG_ITEM_CANNOT_CREATE, emblemId, noSpaceForCount);
                         continue;
                     }
 
@@ -132,7 +134,7 @@ public:
                 } while (result->NextRow());
 
                 CharacterDatabase.Execute("UPDATE emblem_transferences SET active = 0, received_timestamp = CURRENT_TIMESTAMP WHERE receiver_guid = {} AND active = 1", player->GetSession()->GetGuidLow());
-                player->GetSession()->SendNotification("Thank you for using the emblem transfer service!");
+                ChatHandler(player->GetSession()).SendNotification("感谢您使用纹章转移服务！");
                 return OnGossipSelect(player, creature, sender, ACTION_CLOSE);
             }
         }
@@ -175,7 +177,7 @@ public:
 
             if (emblems < minAmount)
             {
-                player->GetSession()->SendNotification("You don't have enough emblems! The minimum amount is %d", minAmount);
+                ChatHandler(player->GetSession()).SendNotification("您的纹章还不够! 最小数量为 {}", minAmount);
                 return OnGossipSelect(player, creature, sender, ACTION_CLOSE);
             }
 
@@ -184,7 +186,7 @@ public:
         // Player selected a character to transfer
         else
         {
-            AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "Last step: Amount of emblems", sender, action, "Enter the amount of emblems to transfer:", 0, true);
+            AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "最后一步：纹章数量", sender, action, "输入要转移的纹章数量:", 0, true);
         }
 
         SendGossipMenuFor(player, DEFAULT_GOSSIP_MESSAGE, creature->GetGUID());
@@ -196,7 +198,7 @@ public:
     {
         if (!isNumber(code))
         {
-            player->GetSession()->SendNotification("Please enter a valid number!");
+            ChatHandler(player->GetSession()).SendNotification("请输入一个有效的数字!");
             return OnGossipSelect(player, creature, sender, ACTION_CLOSE);
         }
 
@@ -234,14 +236,14 @@ public:
         // Deku: emblemId should NEVER be 0
         if (emblemId == 0)
         {
-            player->GetSession()->SendNotification("There was a problem processing your request. Please notify an administrator.");
+            ChatHandler(player->GetSession()).SendNotification("处理您的请求时出现问题。请通知管理员.");
             return OnGossipSelect(player, creature, sender, ACTION_CLOSE);
         }
 
         emblemsCount = player->GetItemCount(emblemId);
         if (emblemsCount < transferAmount)
         {
-            player->GetSession()->SendNotification("You don't have enough emblems!");
+            ChatHandler(player->GetSession()).SendNotification("你没有足够的纹章!");
             return OnGossipSelect(player, creature, sender, ACTION_CLOSE);
         }
 
@@ -251,7 +253,7 @@ public:
         player->DestroyItemCount(emblemId, transferAmount, true, false);
 
         player->PlayerTalkClass->ClearMenus(); // Clear window before farewell
-        AddGossipItemFor(player, GOSSIP_ICON_TAXI, "Transfer completed! Log in with your other character to retrieve the emblems", GOSSIP_SENDER_MAIN, ACTION_CLOSE);
+        AddGossipItemFor(player, GOSSIP_ICON_TAXI, "转移完成! 登录您的其他角色，检查纹章是否转移成功！", GOSSIP_SENDER_MAIN, ACTION_CLOSE);
         SendGossipMenuFor(player,DEFAULT_GOSSIP_MESSAGE, creature->GetGUID());
         return true;
     }
