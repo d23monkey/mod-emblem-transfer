@@ -177,7 +177,7 @@ public:
 
             if (emblems < minAmount)
             {
-                ChatHandler(player->GetSession()).SendNotification("您的纹章还不够! 最小数量为 {}", minAmount);
+                ChatHandler(player->GetSession()).SendNotification("您的纹章还不够! 最小数量为 {} 个", minAmount);
                 return OnGossipSelect(player, creature, sender, ACTION_CLOSE);
             }
 
