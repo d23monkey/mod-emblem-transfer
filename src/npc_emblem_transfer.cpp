@@ -1,10 +1,10 @@
-#include "ScriptMgr.h"
+#include "Chat.h"
 #include "Configuration/Config.h"
 #include "GossipDef.h"
+#include "Language.h"
 #include "Player.h"
 #include "ScriptedGossip.h"
-#include "Language.h"
-#include "Chat.h"
+#include "ScriptMgr.h"
 #pragma execution_character_set("utf-8")
 
 enum Actions
@@ -95,9 +95,7 @@ public:
         }
 
         if (action == ACTION_NONE)
-        {
             return OnGossipHello(player, creature);
-        }
 
         // Player wants to get its emblems
         if (action == ACTION_RETRIEVE_EMBLEMS)
@@ -185,9 +183,7 @@ public:
         }
         // Player selected a character to transfer
         else
-        {
-            AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "最后一步：纹章数量", sender, action, "输入要转移的纹章数量:", 0, true);
-        }
+			AddGossipItemFor(player, GOSSIP_ICON_MONEY_BAG, "最后一步：纹章数量", sender, action, "输入要转移的纹章数量:", 0, true);
 
         SendGossipMenuFor(player, DEFAULT_GOSSIP_MESSAGE, creature->GetGUID());
         return true;
